@@ -26,43 +26,11 @@ const DetailProductPage = ({ product }: { product: ProductsType }) => {
 
 export default DetailProductPage;
 // dipanggil menggunakan server-side rendering
-// export async function getServerSideProps({params} : {params: {products: string}}) {
-//   console.log(params.products);
-
-//   // fetch data dari api
-//   const res = await fetch(`http://localhost:3000/api/product/${params.products}`);
-//   const response = await res.json();
-//   console.log(response);
-
-//   return {
-//     props: {
-//       product: response.data,
-//     },
-//   };
-// }
-
-// dipanggil menggunakan static generation
-export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/products");
-  const response = await res.json();
-
-  const paths = response.data.map((products: ProductsType) => ({
-    params: {
-      products: products.id,
-    },
-  }));
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({
-  params,
-}: {
-  params: { products: string };
-}) {
+export async function getServerSideProps({params} : {params: {products: string}}) {
   console.log(params.products);
-  const res = await fetch(
-    `http://localhost:3000/api/product/${params.products}`
-  );
+
+  // fetch data dari api
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${params.products}`);
   const response = await res.json();
   console.log(response);
 
@@ -72,3 +40,35 @@ export async function getStaticProps({
     },
   };
 }
+
+// dipanggil menggunakan static generation
+// export async function getStaticPaths() {
+//   const res = await fetch("http://localhost:3000/api/products");
+//   const response = await res.json();
+
+//   const paths = response.data.map((products: ProductsType) => ({
+//     params: {
+//       products: products.id,
+//     },
+//   }));
+//   return { paths, fallback: false };
+// }
+
+// export async function getStaticProps({
+//   params,
+// }: {
+//   params: { products: string };
+// }) {
+//   console.log(params.products);
+//   const res = await fetch(
+//     `http://localhost:3000/api/product/${params.products}`
+//   );
+//   const response = await res.json();
+//   console.log(response);
+
+//   return {
+//     props: {
+//       product: response.data,
+//     },
+//   };
+// }
