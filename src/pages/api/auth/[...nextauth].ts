@@ -21,7 +21,7 @@ const authOptions: NextAuthOptions = {
           type: "text",
           placeholder: "jsmith@blabal.com",
         },
-        email: { label: "Email", type: "email" },
+        mail : { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
