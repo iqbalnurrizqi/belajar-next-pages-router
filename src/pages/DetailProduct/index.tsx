@@ -1,4 +1,5 @@
 import { ProductsType } from "@/Type/ProductsType.type";
+import Image from "next/image";
 import React from "react";
 
 const DetailProduct = ({ products }: { products: ProductsType }) => {
@@ -9,10 +10,12 @@ const DetailProduct = ({ products }: { products: ProductsType }) => {
           Detail Product
         </h1>
         <div className="shadow-md w-[300px] m-auto p-3">
-          <img
+          <Image
             src={products.image && products.image}
             alt={products.name}
-            className="w-[250px] h-[250px] m-auto"
+            className="m-auto"
+            width={250}
+            height={250}
           />
 
           <h4 className="font-bold text-black">{products.name}</h4>

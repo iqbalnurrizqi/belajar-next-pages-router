@@ -7,7 +7,7 @@ const register = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isLoading, setIsLoading] = useState(false);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [error, setError] = useState([]);
+  const [error, setError] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {push} = useRouter()
   const handleSubmit = async (event: any) => {

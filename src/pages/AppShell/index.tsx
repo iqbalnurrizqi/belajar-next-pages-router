@@ -4,7 +4,7 @@ import React from "react";
 import { Roboto } from "next/font/google";
 import dynamic from "next/dynamic";
 
-const Navbar = dynamic(() => import("@/components/layout/navbar"))
+const Navbar = dynamic(() => import("@/components/layout/Navbar"))
 
 type AppShellProps = {
   children: React.ReactNode;
